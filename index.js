@@ -25,7 +25,8 @@ app.use(cors({
     origin:(o,cb)=>{
         const allowed=[
             "http://localhost:3000",
-            "http://localhost:5173"
+            "http://localhost:5173",
+            "https://railway-host-production.up.railway.app/"
             
         ]
         if(allowed.indexOf(o) !== -1 || !o){
