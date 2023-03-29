@@ -44,7 +44,7 @@ app.use("/api/auth", require("./routes/authRoute"))
 app.use("/api/products", require("./routes/productRouter"))
 
 app.use("*", (req,res)=>{
-    res.sendFile(path.join(__dirname, "build/index.html"))
+    res.sendFile(path.join(__dirname, "dist/index.html"))
     // res.status(400).json({
     //     message:"404:Resource you are looking for is not available"
     // })
