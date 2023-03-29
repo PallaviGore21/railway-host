@@ -12,6 +12,7 @@ const app =express()
 const cookieParser = require("cookie-parser")
 const { adminProtected } = require("./middlewares/auth")
 app.use(express.static("public"))
+app.use(express.static(path.join(__dirname,"build")))
 app.use(express.static(path.join(__dirname,"public")))
 connectDB()
 app.use(log)
@@ -33,12 +34,12 @@ app.use(cors({
         }
     }
 }))
-app.use("/user", require("./routes/userRoute"))
-app.use("/cart", require("./routes/cartRoutes"))
-app.use("/order", require("./routes/orderRoute"))
-app.use("/employe", adminProtected, require("./routes/EmployeRoute"))
-app.use("/auth", require("./routes/authRoute"))
-app.use("/products", require("./routes/productRouter"))
+app.use("/api/user", require("./routes/userRoute"))
+app.use("/api/cart", require("./routes/cartRoutes"))
+app.use("/api/order", require("./routes/orderRoute"))
+app.use("/api/employe", adminProtected, require("./routes/EmployeRoute"))
+app.use("/api/auth", require("./routes/authRoute"))
+app.use("/api/products", require("./routes/productRouter"))
 
 app.use("*", (req,res)=>{
     res.status(400).json({
