@@ -44,9 +44,10 @@ app.use("/api/auth", require("./routes/authRoute"))
 app.use("/api/products", require("./routes/productRouter"))
 
 app.use("*", (req,res)=>{
-    res.status(400).json({
-        message:"404:Resource you are looking for is not available"
-    })
+    res.sendFile(path.join(__dirname, "build/index.html"))
+    // res.status(400).json({
+    //     message:"404:Resource you are looking for is not available"
+    // })
 })
 app.use(errorHandler)
 const PORT = process.env.PORT || 5000
